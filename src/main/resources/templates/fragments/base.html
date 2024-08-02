@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html th:fragment="parent(bodycontent)" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" /> 
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title th:text="${pageTitle ?: 'Default Title'}">Default Title</title>
+
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header component -->
+    <div>
+        <div th:replace="/fragments/navbar :: navbar"></div>
+    </div>
+    <!-- body content -->
+    <div class="bg-gray-200 w-1/2 p-4 mx-auto mt-2">
+        <section th:replace="${bodycontent}"></section>
+    </div>
+    <!-- footer component -->
+    <div>
+        <div>
+            <div th:replace="/fragments/footer :: footer"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
