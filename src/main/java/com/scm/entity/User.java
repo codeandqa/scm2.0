@@ -54,7 +54,7 @@ public class User implements Serializable {
     private boolean phoneVerified = false;
 
     // SELF, GOOGLE GITHUB
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(value = jakarta.persistence.EnumType.STRING)
     private Providers provider = Providers.SELF;
 
     private String providerUserId;

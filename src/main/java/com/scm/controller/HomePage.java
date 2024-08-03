@@ -29,4 +29,18 @@ public class HomePage {
         return "services";
     }
 
+    @RequestMapping("/signup")
+    public String signup(Model model) {
+        model.addAttribute("pageTitle", "signup");
+        System.out.println("Signup page");
+        return "register";
+    }
+
+    @RequestMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("pageTitle", "signup");
+        System.out.println("Login page");
+        return "login";
+    }
+
 }
