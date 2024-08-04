@@ -44,7 +44,7 @@ public class User implements Serializable {
     @Column(length = 1024)
     private String profilePic;
 
-    private String phoneNumbe;
+    private String phoneNumber;
 
     // Information
     @Getter(value = AccessLevel.NONE)
