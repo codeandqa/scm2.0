@@ -47,8 +47,9 @@ public class User implements Serializable {
     private String phoneNumber;
 
     // Information
-    @Getter(value = AccessLevel.NONE)
-    private boolean enabled = false;
+    // @Getter(value = AccessLevel.NONE)
+    // @Setter
+    private boolean isEnabled = false;
 
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
