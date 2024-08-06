@@ -2,6 +2,7 @@ package com.scm.services.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
+        String userId = UUID.randomUUID().toString();
+        user.setUserid(userId);
         return userRepo.save(user);
     }
 
@@ -66,14 +69,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUserExistByEmail(String email) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isUserExistByEmail'");
+        User user2 = userRepo.findByEmail(email).orElse(null);
+        return user2 != null ? true : false;
     }
 
     @Override
-    public Optional<List<User>> getAllUsers() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllUsers'");
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
     }
 
 }

@@ -10,8 +10,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,8 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "user")
-@Table(name = "users")
+@Entity(name = "users")
 public class User implements Serializable {
 
     @Id
@@ -49,7 +46,7 @@ public class User implements Serializable {
     // Information
     // @Getter(value = AccessLevel.NONE)
     // @Setter
-    private boolean isEnabled = false;
+    private boolean Enabled = false;
 
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
