@@ -6,6 +6,7 @@ import java.util.*;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -39,7 +40,7 @@ public class User implements Serializable {
     private String about;
 
     @Column(length = 1024)
-    private String profilePic;
+    private String profilePic = "https:// cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 
     private String phoneNumber;
 
@@ -52,7 +53,7 @@ public class User implements Serializable {
     private boolean phoneVerified = false;
 
     // SELF, GOOGLE GITHUB
-    @Enumerated(value = jakarta.persistence.EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Providers provider = Providers.SELF;
 
     private String providerUserId;
