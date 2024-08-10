@@ -1,4 +1,4 @@
-package com.scm.controller;
+package com.scm.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.scm.entity.User;
+import com.scm.entities.User;
 import com.scm.forms.UserForm;
-import com.scm.helper.Message;
-import com.scm.helper.MessageType;
+import com.scm.helpers.Message;
+import com.scm.helpers.MessageType;
 import com.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;

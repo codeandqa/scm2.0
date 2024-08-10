@@ -1,4 +1,4 @@
-package com.scm.helper;
+package com.scm.helpers;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

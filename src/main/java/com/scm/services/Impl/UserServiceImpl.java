@@ -1,4 +1,4 @@
-package com.scm.services.serviceImpl;
+package com.scm.services.Impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.scm.entity.User;
-import com.scm.helper.ResourceNotFoundExection;
+import com.scm.entities.User;
+import com.scm.helpers.ResourceNotFoundExection;
 import com.scm.repositories.UserRepo;
 import com.scm.services.UserService;
 
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         String userId = UUID.randomUUID().toString();
-        user.setUserid(userId);
+        user.setUserId(userId);
         return userRepo.save(user);
     }
 
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> updatUser(User user) {
 
-        User UserToUpdate = userRepo.findById(user.getUserid())
+        User UserToUpdate = userRepo.findById(user.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundExection("User Not found"));
 
         UserToUpdate.setName(user.getName());
