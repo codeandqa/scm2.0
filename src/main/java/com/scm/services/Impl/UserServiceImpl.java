@@ -1,14 +1,20 @@
-package com.scm.services.serviceImpl;
+package com.scm.services.Impl;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.logging.Logger;
 
+import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.scm.entity.User;
-import com.scm.helper.ResourceNotFoundExection;
+import org.slf4j.*;
+
+import com.scm.entities.User;
+import com.scm.helpers.AppConstant;
+import com.scm.helpers.ResourceNotFoundExection;
 import com.scm.repositories.UserRepo;
 import com.scm.services.UserService;
 
@@ -18,10 +24,21 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    private org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
+
     @Override
     public User saveUser(User user) {
         String userId = UUID.randomUUID().toString();
-        user.setUserid(userId);
+        user.setUserId(userId);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // set role list
+
+        user.setRoleList(List.of(AppConstant.ROLE_USER));
+        logger.info(user.getProvider().toString());
         return userRepo.save(user);
     }
 
@@ -33,7 +50,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> updatUser(User user) {
 
-        User UserToUpdate = userRepo.findById(user.getUserid())
+        User UserToUpdate = userRepo.findById(user.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundExection("User Not found"));
 
         UserToUpdate.setName(user.getName());

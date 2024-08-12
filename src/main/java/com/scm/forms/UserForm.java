@@ -18,18 +18,18 @@ import lombok.ToString;
 public class UserForm {
 
     @NotBlank(message = "name cannot be blank.")
-    @Size(min = 3, message = "minimum 3 charecters required ")
+    @Size(min = 1, message = "minimum 3 charecters required ")
     private String name;
 
     @NotBlank(message = "Email cannot be blank.")
     private String email;
 
     @NotBlank(message = "Password cannot be blank.")
-    @Size(min = 8, message = "Password length should be min 8")
+    @Size(min = 1, message = "Password length should be min 8")
     private String password;
 
     @NotBlank(message = "Phonenumber cannot be blank.")
-    @Size(min = 10, max = 13, message = "Invalid phone number")
+    @Size(min = 1, max = 13, message = "Invalid phone number")
     private String phoneNumber;
 
     @NotBlank(message = "About cannot be blank.")

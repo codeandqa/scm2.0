@@ -1,4 +1,4 @@
-package com.scm.helper;
+package com.scm.helpers;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;

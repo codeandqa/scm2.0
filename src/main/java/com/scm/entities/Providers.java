@@ -1,4 +1,4 @@
-package com.scm.entity;
+package com.scm.entities;
 
 public enum Providers {
     SELF, GOOGLE, GITHUB
