@@ -16,9 +16,9 @@
                    
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Login Here</h5>
                     <p class="font-normal text-gray-400 dark:text-gray-400">Start managing contacts on cloud</p>
-                    <div class="text-red-600" th:if="${param.error}">
+                    <div class="text-red-600  text-center my-2" th:if="${param.error}">
                         Invalid username and password.</div>
-                    <div class="text-green-600" th:if="${param.logout}">
+                    <div class="text-green-600 text-center my-2" th:if="${param.logout}">
                         You have been logged out.</div>
                     <!-- signup form  -->
                     <form data-th-action="@{/authenticate}" method="POST" class="mt-5">
