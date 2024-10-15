@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,7 +41,8 @@ public class SecurityConfig {
             // authorize.requestMatchers("/home", "/signup", "/do-register").permitAll();
 
         });
-        // httpSecurity.formLogin(Customizer.withDefaults());
+
+        // setting up using the singup form. where the user
         httpSecurity.formLogin(formLogin -> {
             formLogin.loginPage("/login").loginProcessingUrl("/authenticate");
             formLogin.defaultSuccessUrl("/user/dashboard");
@@ -56,13 +58,19 @@ public class SecurityConfig {
             logoutForm.logoutSuccessUrl("/login?logout=true");
         });
 
+        // oauth Configuration
+        httpSecurity.oauth2Login(oauth -> {
+            oauth.loginPage("/login");
+            // oauth.successHandler(null);
+        });
+
         return httpSecurity.build();
 
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-
+        // Encrypt the password
         return new BCryptPasswordEncoder();
     }
 
